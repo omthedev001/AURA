@@ -106,6 +106,9 @@ def whatsapp():
     print(f'Name-------> {str(name)}')
     if (message.count(".") == 2):
         try:
+            user={}
+            hospital_list ={}
+            route_durations = []
             message = message.split(',')
             print(message)
             print(message[0])
