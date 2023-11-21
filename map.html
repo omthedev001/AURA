@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3ea6b03ebddc6b583983042e5ef81db9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3ea6b03ebddc6b583983042e5ef81db9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3ea6b03ebddc6b583983042e5ef81db9 = L.map(
+                "map_3ea6b03ebddc6b583983042e5ef81db9",
+                {
+                    center: [21.214451, 81.659438],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_981a4c8c2026bb7656e6f2f148c9d305 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca target=\"_blank\" href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca target=\"_blank\" href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var marker_449b39139e12a38f36113b27ea78cb91 = L.marker(
+                [21.214451, 81.659438],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_a0bf72ab189baba5332efe8172fc2972 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_449b39139e12a38f36113b27ea78cb91.setIcon(icon_a0bf72ab189baba5332efe8172fc2972);
+        
+    
+        var popup_90944ce1faf9dfefc848c09f7a426340 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ac558a55b4cc1ded7a16bf83939b96fb = $(`<div id="html_ac558a55b4cc1ded7a16bf83939b96fb" style="width: 100.0%; height: 100.0%;">Patients location</div>`)[0];
+                popup_90944ce1faf9dfefc848c09f7a426340.setContent(html_ac558a55b4cc1ded7a16bf83939b96fb);
+            
+        
+
+        marker_449b39139e12a38f36113b27ea78cb91.bindPopup(popup_90944ce1faf9dfefc848c09f7a426340)
+        ;
+
+        
+    
+    
+            marker_449b39139e12a38f36113b27ea78cb91.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f9534eb3ea39a5ae8edb11b71247adfd = L.marker(
+                [21.211172, 81.650402],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_e9e2b75a16f8bb08ec342352272c7821 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f9534eb3ea39a5ae8edb11b71247adfd.setIcon(icon_e9e2b75a16f8bb08ec342352272c7821);
+        
+    
+        var popup_04f2384f2b00ef380afd474e68321a77 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3bff850a37d0d7b0a8e2651cc07debb6 = $(`<div id="html_3bff850a37d0d7b0a8e2651cc07debb6" style="width: 100.0%; height: 100.0%;">Ambulances</div>`)[0];
+                popup_04f2384f2b00ef380afd474e68321a77.setContent(html_3bff850a37d0d7b0a8e2651cc07debb6);
+            
+        
+
+        marker_f9534eb3ea39a5ae8edb11b71247adfd.bindPopup(popup_04f2384f2b00ef380afd474e68321a77)
+        ;
+
+        
+    
+    
+            marker_f9534eb3ea39a5ae8edb11b71247adfd.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4809d2838444efe88e7a4c2778a5ee91 = L.marker(
+                [21.227515, 81.637685],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_3b5481e4f65c23990147d80c0cf1292b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_4809d2838444efe88e7a4c2778a5ee91.setIcon(icon_3b5481e4f65c23990147d80c0cf1292b);
+        
+    
+        var popup_04eacfcb812f9f17e830ff5c2bb19789 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1818d42055e9b9261ac7a6fb81709246 = $(`<div id="html_1818d42055e9b9261ac7a6fb81709246" style="width: 100.0%; height: 100.0%;">Ambulances</div>`)[0];
+                popup_04eacfcb812f9f17e830ff5c2bb19789.setContent(html_1818d42055e9b9261ac7a6fb81709246);
+            
+        
+
+        marker_4809d2838444efe88e7a4c2778a5ee91.bindPopup(popup_04eacfcb812f9f17e830ff5c2bb19789)
+        ;
+
+        
+    
+    
+            marker_4809d2838444efe88e7a4c2778a5ee91.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6aae084e1e77cd7ab71cc102aa6a508e = L.marker(
+                [21.205652, 81.658727],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_3d136d3f71a4a06fad5c9e3deb314806 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6aae084e1e77cd7ab71cc102aa6a508e.setIcon(icon_3d136d3f71a4a06fad5c9e3deb314806);
+        
+    
+        var popup_cf9617529edabf6554d3f8bb2c4f4840 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7b380eafbcf8c1e8b2e93afd6ebed859 = $(`<div id="html_7b380eafbcf8c1e8b2e93afd6ebed859" style="width: 100.0%; height: 100.0%;">Ambulances</div>`)[0];
+                popup_cf9617529edabf6554d3f8bb2c4f4840.setContent(html_7b380eafbcf8c1e8b2e93afd6ebed859);
+            
+        
+
+        marker_6aae084e1e77cd7ab71cc102aa6a508e.bindPopup(popup_cf9617529edabf6554d3f8bb2c4f4840)
+        ;
+
+        
+    
+    
+            marker_6aae084e1e77cd7ab71cc102aa6a508e.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c145c9039a19c548b41eeedf75491cf1 = L.marker(
+                [21.271156, 81.657879],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_4f5eadef672a152d8a31612c20be7ba5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c145c9039a19c548b41eeedf75491cf1.setIcon(icon_4f5eadef672a152d8a31612c20be7ba5);
+        
+    
+        var popup_ad203485d8d113da5a7cd532f89ce6c1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c530c7d030e4119eb130c1e353538d7d = $(`<div id="html_c530c7d030e4119eb130c1e353538d7d" style="width: 100.0%; height: 100.0%;">Ambulances</div>`)[0];
+                popup_ad203485d8d113da5a7cd532f89ce6c1.setContent(html_c530c7d030e4119eb130c1e353538d7d);
+            
+        
+
+        marker_c145c9039a19c548b41eeedf75491cf1.bindPopup(popup_ad203485d8d113da5a7cd532f89ce6c1)
+        ;
+
+        
+    
+    
+            marker_c145c9039a19c548b41eeedf75491cf1.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9073dac4c68c975831ad375abe10a9bc = L.marker(
+                [21.210926, 81.670563],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_7b2323a245d4e1337e1fb879e3c2d3d0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9073dac4c68c975831ad375abe10a9bc.setIcon(icon_7b2323a245d4e1337e1fb879e3c2d3d0);
+        
+    
+        var popup_4974ea69f9a8f82940886c8e5eaf9d5d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_64a678ecf38b803e110c2b2207418676 = $(`<div id="html_64a678ecf38b803e110c2b2207418676" style="width: 100.0%; height: 100.0%;">Ambulances</div>`)[0];
+                popup_4974ea69f9a8f82940886c8e5eaf9d5d.setContent(html_64a678ecf38b803e110c2b2207418676);
+            
+        
+
+        marker_9073dac4c68c975831ad375abe10a9bc.bindPopup(popup_4974ea69f9a8f82940886c8e5eaf9d5d)
+        ;
+
+        
+    
+    
+            marker_9073dac4c68c975831ad375abe10a9bc.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_21bd0f0e185ef89b296c01b4be979ed2 = L.marker(
+                [21.210926, 81.670563],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_e9c99362f469471b176a7ce61572f37c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_21bd0f0e185ef89b296c01b4be979ed2.setIcon(icon_e9c99362f469471b176a7ce61572f37c);
+        
+    
+        var popup_7f55a5caa24eb0d6f9903622384e0df6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2083322731e4395aa8d98194dd1d5751 = $(`<div id="html_2083322731e4395aa8d98194dd1d5751" style="width: 100.0%; height: 100.0%;">Starting point.Ambulance confirms to pick up the patient</div>`)[0];
+                popup_7f55a5caa24eb0d6f9903622384e0df6.setContent(html_2083322731e4395aa8d98194dd1d5751);
+            
+        
+
+        marker_21bd0f0e185ef89b296c01b4be979ed2.bindPopup(popup_7f55a5caa24eb0d6f9903622384e0df6)
+        ;
+
+        
+    
+    
+            marker_21bd0f0e185ef89b296c01b4be979ed2.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_2bffb8a1cc0054ec43fb4b48044f56de = L.circle(
+                [21.214451, 81.659438],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2000, "stroke": true, "weight": 3}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var marker_1fd9d924831e87a24a759842efb7ded1 = L.marker(
+                [21.213081, 81.653724],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_21bed0f9153d53b46e033433723adc5e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_1fd9d924831e87a24a759842efb7ded1.setIcon(icon_21bed0f9153d53b46e033433723adc5e);
+        
+    
+        var popup_6c2367201bf0563a20a1d0a539d27cc2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_16752d79314782fb402e1ed16d1cc506 = $(`<div id="html_16752d79314782fb402e1ed16d1cc506" style="width: 100.0%; height: 100.0%;">Ramkrishna Care Hospital</div>`)[0];
+                popup_6c2367201bf0563a20a1d0a539d27cc2.setContent(html_16752d79314782fb402e1ed16d1cc506);
+            
+        
+
+        marker_1fd9d924831e87a24a759842efb7ded1.bindPopup(popup_6c2367201bf0563a20a1d0a539d27cc2)
+        ;
+
+        
+    
+    
+            var marker_0c7a705406325c559f2d76b6d7465ced = L.marker(
+                [21.213261, 81.657736],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_b083cc51b01361565c3e8acc11a3a0df = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_0c7a705406325c559f2d76b6d7465ced.setIcon(icon_b083cc51b01361565c3e8acc11a3a0df);
+        
+    
+        var popup_264ebf1f505c8206f49636c36b3528b3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_277f6e53f3d824078244322e02f736f7 = $(`<div id="html_277f6e53f3d824078244322e02f736f7" style="width: 100.0%; height: 100.0%;">Narayana Hrudayalaya Mmi Hospital (Managed By Narayana Hrudayalaya Pvt Ltd - Bangalore) - Raipur</div>`)[0];
+                popup_264ebf1f505c8206f49636c36b3528b3.setContent(html_277f6e53f3d824078244322e02f736f7);
+            
+        
+
+        marker_0c7a705406325c559f2d76b6d7465ced.bindPopup(popup_264ebf1f505c8206f49636c36b3528b3)
+        ;
+
+        
+    
+    
+            var marker_a26bb8064f5f50e8e74340f8dd72e63b = L.marker(
+                [21.213169, 81.656178],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_809e5b4e2121ddf4e53d53fc8628d2b0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_a26bb8064f5f50e8e74340f8dd72e63b.setIcon(icon_809e5b4e2121ddf4e53d53fc8628d2b0);
+        
+    
+        var popup_91bcef9ee51108347e02920ea1f7670c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1fde0b35ede257e3905aaadf06ad6621 = $(`<div id="html_1fde0b35ede257e3905aaadf06ad6621" style="width: 100.0%; height: 100.0%;">Shri Ganesh Vinayak Eye Hospital</div>`)[0];
+                popup_91bcef9ee51108347e02920ea1f7670c.setContent(html_1fde0b35ede257e3905aaadf06ad6621);
+            
+        
+
+        marker_a26bb8064f5f50e8e74340f8dd72e63b.bindPopup(popup_91bcef9ee51108347e02920ea1f7670c)
+        ;
+
+        
+    
+    
+            var marker_a72ce5db8340836c9fab61d1d3b5b006 = L.marker(
+                [21.227486, 81.648076],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_8e81c47530aee3d16ecdce6b9e0e8805 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_a72ce5db8340836c9fab61d1d3b5b006.setIcon(icon_8e81c47530aee3d16ecdce6b9e0e8805);
+        
+    
+        var popup_0e7e421eb705861fa4d0c2c7eb5fe4d3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4fcf7d7a4e9a3fa2128bc674398cef52 = $(`<div id="html_4fcf7d7a4e9a3fa2128bc674398cef52" style="width: 100.0%; height: 100.0%;">jain mandir</div>`)[0];
+                popup_0e7e421eb705861fa4d0c2c7eb5fe4d3.setContent(html_4fcf7d7a4e9a3fa2128bc674398cef52);
+            
+        
+
+        marker_a72ce5db8340836c9fab61d1d3b5b006.bindPopup(popup_0e7e421eb705861fa4d0c2c7eb5fe4d3)
+        ;
+
+        
+    
+    
+            var marker_c94f941e54d0da1c571480f5fc6886ce = L.marker(
+                [21.227866, 81.648436],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_26af2c6a738af13e41fe62fdd6c98dd2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_c94f941e54d0da1c571480f5fc6886ce.setIcon(icon_26af2c6a738af13e41fe62fdd6c98dd2);
+        
+    
+        var popup_c97c79b80695ff55744222ea5f771c07 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c393a5ee5da9f7d23ce818211670408e = $(`<div id="html_c393a5ee5da9f7d23ce818211670408e" style="width: 100.0%; height: 100.0%;">chandak hospital</div>`)[0];
+                popup_c97c79b80695ff55744222ea5f771c07.setContent(html_c393a5ee5da9f7d23ce818211670408e);
+            
+        
+
+        marker_c94f941e54d0da1c571480f5fc6886ce.bindPopup(popup_c97c79b80695ff55744222ea5f771c07)
+        ;
+
+        
+    
+    
+            var marker_638e0f33555513659467de86907301b8 = L.marker(
+                [21.228414, 81.654533],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_5a46567bfde8a1365f19146db8b62574 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_638e0f33555513659467de86907301b8.setIcon(icon_5a46567bfde8a1365f19146db8b62574);
+        
+    
+        var popup_b68dfeab1aee324818cca160bcd9671f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5e4e161977ff1271e332c5e8c925fc10 = $(`<div id="html_5e4e161977ff1271e332c5e8c925fc10" style="width: 100.0%; height: 100.0%;">Navkar Hospital and Maternity Home</div>`)[0];
+                popup_b68dfeab1aee324818cca160bcd9671f.setContent(html_5e4e161977ff1271e332c5e8c925fc10);
+            
+        
+
+        marker_638e0f33555513659467de86907301b8.bindPopup(popup_b68dfeab1aee324818cca160bcd9671f)
+        ;
+
+        
+    
+    
+            var marker_853c228e0da0b99db7bd773f109b7aab = L.marker(
+                [21.228416, 81.665261],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_ae472265c3a9fc3abf65101bc42ab079 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_853c228e0da0b99db7bd773f109b7aab.setIcon(icon_ae472265c3a9fc3abf65101bc42ab079);
+        
+    
+        var popup_ea1f8bfbb21bde4aa1f721cb94bff687 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5ebde3b5668af3748fac264bfe7f7083 = $(`<div id="html_5ebde3b5668af3748fac264bfe7f7083" style="width: 100.0%; height: 100.0%;">Nursing Home</div>`)[0];
+                popup_ea1f8bfbb21bde4aa1f721cb94bff687.setContent(html_5ebde3b5668af3748fac264bfe7f7083);
+            
+        
+
+        marker_853c228e0da0b99db7bd773f109b7aab.bindPopup(popup_ea1f8bfbb21bde4aa1f721cb94bff687)
+        ;
+
+        
+    
+    
+            var marker_04b48dceed436ecc33f9598c80815bf4 = L.marker(
+                [21.223314, 81.652299],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_e41812edb65fd0dbd1ab0e14cdfa1102 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_04b48dceed436ecc33f9598c80815bf4.setIcon(icon_e41812edb65fd0dbd1ab0e14cdfa1102);
+        
+    
+        var popup_d6805ead8ddaf9597d0173db2482881b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_506bc097e98daf9521923628a12a93bf = $(`<div id="html_506bc097e98daf9521923628a12a93bf" style="width: 100.0%; height: 100.0%;">Devi Laxmi Hospital</div>`)[0];
+                popup_d6805ead8ddaf9597d0173db2482881b.setContent(html_506bc097e98daf9521923628a12a93bf);
+            
+        
+
+        marker_04b48dceed436ecc33f9598c80815bf4.bindPopup(popup_d6805ead8ddaf9597d0173db2482881b)
+        ;
+
+        
+    
+    
+            var marker_9e72557683c22583da70b40ebbbb882e = L.marker(
+                [21.214265, 81.650323],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_4ed0e0b26a652ac657f55e404edf7c49 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_9e72557683c22583da70b40ebbbb882e.setIcon(icon_4ed0e0b26a652ac657f55e404edf7c49);
+        
+    
+        var popup_9c2afcfed7e8b364209c1fe8edb64021 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_746d9eca979683b15a5f049d0e2e3aee = $(`<div id="html_746d9eca979683b15a5f049d0e2e3aee" style="width: 100.0%; height: 100.0%;">Sanjeevani Cbcc Usa Cancer Hospital</div>`)[0];
+                popup_9c2afcfed7e8b364209c1fe8edb64021.setContent(html_746d9eca979683b15a5f049d0e2e3aee);
+            
+        
+
+        marker_9e72557683c22583da70b40ebbbb882e.bindPopup(popup_9c2afcfed7e8b364209c1fe8edb64021)
+        ;
+
+        
+    
+    
+            var marker_cb3917cba1d88202005b8dcc63ee1211 = L.marker(
+                [21.22482, 81.659572],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_7489bb85e93efd99e37cc47d80d63d61 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_cb3917cba1d88202005b8dcc63ee1211.setIcon(icon_7489bb85e93efd99e37cc47d80d63d61);
+        
+    
+        var popup_5a48c8aba5f62a5f05d16a385a9ab596 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8042014368f440c4475a31d221f09245 = $(`<div id="html_8042014368f440c4475a31d221f09245" style="width: 100.0%; height: 100.0%;">Tharani Children Hospital And Dental Clinic</div>`)[0];
+                popup_5a48c8aba5f62a5f05d16a385a9ab596.setContent(html_8042014368f440c4475a31d221f09245);
+            
+        
+
+        marker_cb3917cba1d88202005b8dcc63ee1211.bindPopup(popup_5a48c8aba5f62a5f05d16a385a9ab596)
+        ;
+
+        
+    
+    
+            var marker_773282d72510c76be948dfefd3dca8fc = L.marker(
+                [21.223314, 81.652299],
+                {}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+    
+            var icon_b24386da1c1625b0697195688b66282c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_773282d72510c76be948dfefd3dca8fc.setIcon(icon_b24386da1c1625b0697195688b66282c);
+        
+    
+        var popup_ee88e481f078434d53bd8ca8c0ae3b82 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_666b553e4c95bbc3d4113c8da47d5d04 = $(`<div id="html_666b553e4c95bbc3d4113c8da47d5d04" style="width: 100.0%; height: 100.0%;">Selected hospital</div>`)[0];
+                popup_ee88e481f078434d53bd8ca8c0ae3b82.setContent(html_666b553e4c95bbc3d4113c8da47d5d04);
+            
+        
+
+        marker_773282d72510c76be948dfefd3dca8fc.bindPopup(popup_ee88e481f078434d53bd8ca8c0ae3b82)
+        ;
+
+        
+    
+    
+            marker_773282d72510c76be948dfefd3dca8fc.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+        function geo_json_8674b2e40e256c96cb5e1218933dfa0e_styler(feature) {
+            switch(feature.properties.transfers) {
+                default:
+                    return {"color": "blue"};
+            }
+        }
+
+        function geo_json_8674b2e40e256c96cb5e1218933dfa0e_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_8674b2e40e256c96cb5e1218933dfa0e = L.geoJson(null, {
+                onEachFeature: geo_json_8674b2e40e256c96cb5e1218933dfa0e_onEachFeature,
+            
+                style: geo_json_8674b2e40e256c96cb5e1218933dfa0e_styler,
+        });
+
+        function geo_json_8674b2e40e256c96cb5e1218933dfa0e_add (data) {
+            geo_json_8674b2e40e256c96cb5e1218933dfa0e
+                .addData(data)
+                .addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        }
+            geo_json_8674b2e40e256c96cb5e1218933dfa0e_add({"bbox": [81.659475, 21.20791, 81.670944, 21.214511], "features": [{"bbox": [81.659475, 21.20791, 81.670944, 21.214511], "geometry": {"coordinates": [[81.670564, 21.210934], [81.67044, 21.210952], [81.670203, 21.209882], [81.669975, 21.209049], [81.669765, 21.208671], [81.670489, 21.208249], [81.670944, 21.207987], [81.670896, 21.20791], [81.669712, 21.208568], [81.667825, 21.209683], [81.662511, 21.212736], [81.659944, 21.21424], [81.659785, 21.214344], [81.659475, 21.214511]], "type": "LineString"}, "properties": {"fare": 0, "segments": [{"distance": 1824.5, "duration": 132.5, "steps": [{"distance": 13.0, "duration": 1.6, "instruction": "Head west", "name": "-", "type": 11, "way_points": [0, 1]}, {"distance": 264.5, "duration": 63.5, "instruction": "Turn left", "name": "-", "type": 0, "way_points": [1, 4]}, {"distance": 143.9, "duration": 6.1, "instruction": "Turn left onto NH30", "name": "NH30", "type": 0, "way_points": [4, 6]}, {"distance": 1403.0, "duration": 61.4, "instruction": "Continue straight onto NH30", "name": "NH30", "type": 6, "way_points": [6, 13]}, {"distance": 0.0, "duration": 0.0, "instruction": "Arrive at NH30, on the left", "name": "-", "type": 10, "way_points": [13, 13]}]}], "summary": {"distance": 1824.5, "duration": 132.5}, "transfers": 0, "way_points": [0, 13]}, "type": "Feature"}], "metadata": {"attribution": "openrouteservice.org | OpenStreetMap contributors", "engine": {"build_date": "2023-07-09T01:31:50Z", "graph_date": "2023-11-19T15:25:49Z", "version": "7.1.0"}, "query": {"coordinates": [[81.670563, 21.210926], [81.659438, 21.214451]], "format": "geojson", "profile": "driving-car"}, "service": "routing", "timestamp": 1700556653320}, "type": "FeatureCollection"});
+
+        
+    
+        function geo_json_0bf17bb9b9c8bab99a073251ed94ff2d_styler(feature) {
+            switch(feature.properties.transfers) {
+                default:
+                    return {"color": "red"};
+            }
+        }
+
+        function geo_json_0bf17bb9b9c8bab99a073251ed94ff2d_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_0bf17bb9b9c8bab99a073251ed94ff2d = L.geoJson(null, {
+                onEachFeature: geo_json_0bf17bb9b9c8bab99a073251ed94ff2d_onEachFeature,
+            
+                style: geo_json_0bf17bb9b9c8bab99a073251ed94ff2d_styler,
+        });
+
+        function geo_json_0bf17bb9b9c8bab99a073251ed94ff2d_add (data) {
+            geo_json_0bf17bb9b9c8bab99a073251ed94ff2d
+                .addData(data)
+                .addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        }
+            geo_json_0bf17bb9b9c8bab99a073251ed94ff2d_add({"bbox": [81.649674, 21.20791, 81.670944, 21.224063], "features": [{"bbox": [81.649674, 21.20791, 81.670944, 21.224063], "geometry": {"coordinates": [[81.652448, 21.223161], [81.652876, 21.223522], [81.652838, 21.223589], [81.652766, 21.224063], [81.651764, 21.223294], [81.651806, 21.22325], [81.652139, 21.2229], [81.652168, 21.222861], [81.652327, 21.22265], [81.652365, 21.222594], [81.651512, 21.221885], [81.651223, 21.221644], [81.650939, 21.221406], [81.650299, 21.220869], [81.649674, 21.220321], [81.651286, 21.219379], [81.651919, 21.219019], [81.652946, 21.218407], [81.653676, 21.217969], [81.653942, 21.21781], [81.654399, 21.217538], [81.656975, 21.216102], [81.657252, 21.215934], [81.658672, 21.215077], [81.659302, 21.214734], [81.66087, 21.213835], [81.662552, 21.212828], [81.663458, 21.212293], [81.6657, 21.211001], [81.668532, 21.209408], [81.669765, 21.208671], [81.670489, 21.208249], [81.670944, 21.207987], [81.670896, 21.20791], [81.669712, 21.208568], [81.667825, 21.209683], [81.662511, 21.212736], [81.659944, 21.21424], [81.659785, 21.214344], [81.659475, 21.214511]], "type": "LineString"}, "properties": {"fare": 0, "segments": [{"distance": 4732.2, "duration": 259.2, "steps": [{"distance": 59.8, "duration": 3.6, "instruction": "Head northeast", "name": "-", "type": 11, "way_points": [0, 1]}, {"distance": 61.7, "duration": 14.8, "instruction": "Turn left", "name": "-", "type": 0, "way_points": [1, 3]}, {"distance": 134.5, "duration": 32.3, "instruction": "Turn sharp left", "name": "-", "type": 2, "way_points": [3, 4]}, {"distance": 99.8, "duration": 14.6, "instruction": "Turn left", "name": "-", "type": 0, "way_points": [4, 9]}, {"distance": 376.5, "duration": 22.6, "instruction": "Turn right", "name": "-", "type": 1, "way_points": [9, 14]}, {"distance": 2596.8, "duration": 110.0, "instruction": "Turn sharp left onto NH30", "name": "NH30", "type": 2, "way_points": [14, 32]}, {"distance": 1403.0, "duration": 61.4, "instruction": "Continue straight onto NH30", "name": "NH30", "type": 6, "way_points": [32, 39]}, {"distance": 0.0, "duration": 0.0, "instruction": "Arrive at NH30, on the left", "name": "-", "type": 10, "way_points": [39, 39]}]}], "summary": {"distance": 4732.2, "duration": 259.2}, "transfers": 0, "way_points": [0, 39]}, "type": "Feature"}], "metadata": {"attribution": "openrouteservice.org | OpenStreetMap contributors", "engine": {"build_date": "2023-07-09T01:31:50Z", "graph_date": "2023-11-19T15:25:49Z", "version": "7.1.0"}, "query": {"coordinates": [[81.652299, 21.223314], [81.659438, 21.214451]], "format": "geojson", "profile": "driving-car"}, "service": "routing", "timestamp": 1700556655968}, "type": "FeatureCollection"});
+
+        
+    
+            var layer_control_757d2b052c51e60a99bde2586afa0c56 = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_981a4c8c2026bb7656e6f2f148c9d305,
+                },
+                overlays :  {
+                    "Route 1" : geo_json_8674b2e40e256c96cb5e1218933dfa0e,
+                    "Route 2" : geo_json_0bf17bb9b9c8bab99a073251ed94ff2d,
+                },
+            };
+            L.control.layers(
+                layer_control_757d2b052c51e60a99bde2586afa0c56.base_layers,
+                layer_control_757d2b052c51e60a99bde2586afa0c56.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_3ea6b03ebddc6b583983042e5ef81db9);
+        
+</script>
+</html>

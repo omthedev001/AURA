@@ -1,5 +1,6 @@
 # importing Libs
 from twilio.rest import Client
+from flask import *
 import flask
 import openrouteservice as ors
 import what3words as w3w
@@ -9,10 +10,12 @@ import os
 from datetime import datetime
 import pyrebase
 import folium 
+from dotenv import load_dotenv
+load_dotenv()
 
 # Declaring vars
-acc_sid = os.environ.get('TWILIO_ACCOUNT_SID')
-acc_auth = os.environ.get('TWILIO_AUTH_TOKEN')
+acc_sid = 'ACd41aaee974e57b7c0ed7fe5b11309605'
+acc_auth = 'e5ec8f5b23ec2444bcbeb2e0e1509ce3'
 twilio_number = os.environ.get('TWILIO_WHATSAPP')
 ors_key = os.environ.get('ORS_KEY')
 w3w_key = os.environ.get('W3W_KEY')
@@ -35,7 +38,7 @@ config = {
 }
 
 # create app instance
-app = flask.Flask(__name__)
+app = Flask(__name__)
 firebase = pyrebase.initialize_app(config)
 database = firebase.database()
 storage = firebase.storage()
@@ -242,5 +245,79 @@ def whatsapp():
         time.sleep(1)
         SendMsg(number,'https://www.what3words.com\n Make sure to send the correct information and have a good internet connection')
     return'200'
+@app.route('/get_ambulance/<string:coords>',methods = ['GET','POST'])
+def get_ambulance(coords):
+    route_durations = []
+    new_coords = str(coords).split(',')
+    lng = float(new_coords[1])
+    lat = float(new_coords[0])
+
+    for points in pickup_points:
+                print(points)
+                coords_temp = [points[0],[lng,lat]]
+                route_temp = ors_client.directions(coordinates=[points[0],[lng,lat]],
+                              profile='driving-car',
+                              format='geojson')
+                duration_temp = route_temp['features'][0]['properties']['summary']['duration']
+                route_durations.append(duration_temp)
+    shortest_duration_index = route_durations.index(min(route_durations))
+    print(shortest_duration_index)
+    # Get the coordinates and duration of the shortest route
+    shortest_duration_coordinates = pickup_points[shortest_duration_index][0]
+    driver_data = pickup_points[shortest_duration_index][1] 
+    driver_number = str(driver_data).split(":")
+    driver_number = driver_number[1]
+    print(shortest_duration_coordinates)
+    data = {'selected_ambulance':pickup_points[shortest_duration_index],'other':pickup_points}
+
+    return jsonify(data), 200
+@app.route('/pois/<string:coords>/<id>/<int:buffer>/<int:limit>',methods = ['GET','POST'])
+def get_pois(coords,id,buffer,limit):
+    
+    # data = {"coords":str(coords).split(','),"id":id,"buffer":buffer}
+    hospital_list = {}
+    new_coords = str(coords).split(',')
+    lng = float(new_coords[1])
+    lat = float(new_coords[0])
+    print([int(id)])
+    geojson = {"type": "point", "coordinates": [lng,lat]}
+    pois = ors_client.places(request='pois',
+                             geojson=geojson,
+                             buffer=buffer,
+                             filter_category_ids=[int(id)])
+    print(pois)
+    limit = limit
+    index = 0
+    for poi in pois['features']:
+        coords1 = poi['geometry']['coordinates']
+        hospitals = poi['properties']['osm_tags']['name']
+        coords2 = [[lng,lat],coords1]
+        route = ors_client.directions(coordinates=coords2,
+                                    profile='driving-car',
+                                    format='geojson')
+        # print(route)
+        duration1 = (route['features'][0]['properties']['summary']['duration'])
+        hospital_list[index]={}
+        hospital_list[index]['name']=hospitals
+        hospital_list[index]['duration']=duration1
+        hospital_list[index]['coords']=coords1
+        hospital_list[index]['coords_rev']= list(reversed(coords1))
+        print(f'{hospitals},{duration1}')
+        print(list(reversed(coords1)))
+        index = index+1
+        if index >= limit:
+            break
+    selected_hospital = nearest_hospital(hospital_list,'duration')
+    print(selected_hospital)
+    print(hospital_list)
+    data = {"selected_hospital":hospital_list[selected_hospital],"hospitals":hospital_list}
+    print(jsonify(data))
+    return jsonify(data), 200
+# @app.route('/send_message/<str:to_number>/<str:message>',methods = ['GET','POST'])
+# def send_message(to_number,message):
+#     to_number = 0
+#     to_number = f'whatsapp:{to_number}'
+#     SendMsg(number=to_number,msg=message)
+#     return'200'
 if __name__ == "__main__":   
     app.run(port=5000,debug=True)
