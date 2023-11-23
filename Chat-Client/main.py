@@ -15,7 +15,7 @@ load_dotenv()
 
 # Declaring vars
 acc_sid = 'ACd41aaee974e57b7c0ed7fe5b11309605'
-acc_auth = 'e5ec8f5b23ec2444bcbeb2e0e1509ce3'
+acc_auth = '78c278d03b9a1bc19631b1fd042f30a6'
 twilio_number = os.environ.get('TWILIO_WHATSAPP')
 ors_key = os.environ.get('ORS_KEY')
 w3w_key = os.environ.get('W3W_KEY')
@@ -50,7 +50,7 @@ route_durations = []
 
 pickup_points = [[[81.650402,21.211172],"Om:+917724811110"],
                 [[81.637685,21.227515],"Rajiv:+917724811110"],
-                [[81.658727,21.205652],"Raju:+917724811110"],
+                [[81.658762,21.205678],"Raju:+917724811110"],
                 [[81.657879,21.271156],"Pramod:+917724811110"],
                 [[81.670563,21.210926],"Darsh:+917724811110"]]
 
@@ -313,11 +313,18 @@ def get_pois(coords,id,buffer,limit):
     data = {"selected_hospital":hospital_list[selected_hospital],"hospitals":hospital_list}
     print(jsonify(data))
     return jsonify(data), 200
-# @app.route('/send_message/<str:to_number>/<str:message>',methods = ['GET','POST'])
-# def send_message(to_number,message):
-#     to_number = 0
-#     to_number = f'whatsapp:{to_number}'
-#     SendMsg(number=to_number,msg=message)
-#     return'200'
+@app.route('/send_message/<number>/<coordinates>/<hospital>/<name>/<to_number>',methods = ['GET','POST'])
+def send_message(number,coordinates,name,to_number,hospital):
+    body = f"New Paitent at\nhttps://www.google.com/maps/@{coordinates},15.82z?entry=ttu\nName:{name}\nNumber:{number}\nHospital:{hospital}"
+    SendMsg(f'whatsapp:{to_number}',body)
+    return '200'
+@app.route('/send_to_firebase/<child>/<name>/<number>/<coords>/<duration>/<driver>/<hospital>',methods = ['GET','POST'])
+def send_to_firebase(child,name,number,coords,duration,driver,hospital):
+    now = datetime.now()
+    now = datetime.now()
+    data ={"Name":str(name),"Number":str(number),"Coordinates":coords,"Duration":str(duration),"Date":str(now.date()),"Time":now.strftime('%H:%M:%S'),
+            "Driver":str(driver),"Hospital":str(hospital)}
+    database.child(child).child('Users').push(data)
+    return jsonify(data),200
 if __name__ == "__main__":   
     app.run(port=5000,debug=True)
