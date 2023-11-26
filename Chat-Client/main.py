@@ -15,7 +15,7 @@ load_dotenv()
 
 # Declaring vars
 acc_sid = 'ACd41aaee974e57b7c0ed7fe5b11309605'
-acc_auth = '78c278d03b9a1bc19631b1fd042f30a6'
+acc_auth = '5366764df1678db54f6875eb557f9781'
 twilio_number = os.environ.get('TWILIO_WHATSAPP')
 ors_key = os.environ.get('ORS_KEY')
 w3w_key = os.environ.get('W3W_KEY')
@@ -322,7 +322,7 @@ def send_message(number,coordinates,name,to_number,hospital):
 def send_to_firebase(child,name,number,coords,duration,driver,hospital):
     now = datetime.now()
     now = datetime.now()
-    data ={"Name":str(name),"Number":str(number),"Coordinates":coords,"Duration":str(duration),"Date":str(now.date()),"Time":now.strftime('%H:%M:%S'),
+    data ={"Name":str(name),"Number":str(number),"Coordinates":coords,"Duration":str(duration),"Date":str(now.date()),"Time":now.strftime('%.H:%M:%S'),
             "Driver":str(driver),"Hospital":str(hospital)}
     database.child(child).child('Users').push(data)
     return jsonify(data),200
