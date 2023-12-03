@@ -58,12 +58,12 @@ def get_pois(coords,id,buffer,limit):
     new_coords = str(coords).split(',')
     lng = float(new_coords[1])
     lat = float(new_coords[0])
-    print([int(id)])
+
     geojson = {"type": "point", "coordinates": [lng,lat]}
     pois = ors_client.places(request='pois',
                              geojson=geojson,
                              buffer=buffer,
-                             filter_category_ids=[int(id)])
+                             filter_category_ids=206)
     print(pois)
     limit = limit
     index = 0

@@ -15,7 +15,7 @@ load_dotenv()
 
 # Declaring vars
 acc_sid = 'ACd41aaee974e57b7c0ed7fe5b11309605'
-acc_auth = '5366764df1678db54f6875eb557f9781'
+acc_auth = '91a65c9197983547f5b383ad7bba2f10'
 twilio_number = os.environ.get('TWILIO_WHATSAPP')
 ors_key = os.environ.get('ORS_KEY')
 w3w_key = os.environ.get('W3W_KEY')
@@ -322,9 +322,85 @@ def send_message(number,coordinates,name,to_number,hospital):
 def send_to_firebase(child,name,number,coords,duration,driver,hospital):
     now = datetime.now()
     now = datetime.now()
-    data ={"Name":str(name),"Number":str(number),"Coordinates":coords,"Duration":str(duration),"Date":str(now.date()),"Time":now.strftime('%.H:%M:%S'),
+    data ={"Name":str(name),"Number":str(number),"Coordinates":str(coords),"Duration":str(duration),"Date":str(now.date()),"Time":str(now.strftime('%.H:%M:%S')),
             "Driver":str(driver),"Hospital":str(hospital)}
     database.child(child).child('Users').push(data)
+    return jsonify(data),200
+@app.route('/accident/<coords>/<int:flame>/<int:lastspeed>',methods = ['GET','POST'])
+def send_help(coords,flame,lastspeed):
+    route_durations = []
+    new_coords = str(coords).split(',')
+    lng = float(new_coords[1])
+    lat = float(new_coords[0])
+    print(lat)
+    print(lng)
+    print(lng,lat)
+    for points in pickup_points:
+                print(points)
+                coords_temp = [points[0],[lng,lat]]
+                route_temp = ors_client.directions(coordinates=[points[0],[lng,lat]],
+                              profile='driving-car',
+                              format='geojson')
+                duration_temp = route_temp['features'][0]['properties']['summary']['duration']
+                route_durations.append(duration_temp)
+    shortest_duration_index = route_durations.index(min(route_durations))
+    print(shortest_duration_index)
+    # Get the coordinates and duration of the shortest route
+    shortest_duration_coordinates = pickup_points[shortest_duration_index][0]
+    driver_data = pickup_points[shortest_duration_index][1] 
+    driver_number = str(driver_data).split(":")
+    driver_number = driver_number[1]
+    print(shortest_duration_coordinates)
+    
+    hospital_list = {}
+    geojson = {"type": "point", "coordinates": [lng,lat]}
+    print(geojson)
+    pois = ors_client.places(request='pois',
+                             geojson=geojson,
+                             buffer=2000,
+                             filter_category_ids=[206])
+    print(pois)
+    limit = 10
+    index = 0
+    for poi in pois['features']:
+        coords1 = poi['geometry']['coordinates']
+        hospitals = poi['properties']['osm_tags']['name']
+        coords2 = [[lng,lat],coords1]
+        route = ors_client.directions(coordinates=coords2,
+                                    profile='driving-car',
+                                    format='geojson')
+        # print(route)
+        duration1 = (route['features'][0]['properties']['summary']['duration'])
+        hospital_list[index]={}
+        hospital_list[index]['name']=hospitals
+        hospital_list[index]['duration']=duration1
+        hospital_list[index]['coords']=coords1
+        hospital_list[index]['coords_rev']= list(reversed(coords1))
+        print(f'{hospitals},{duration1}')
+        print(list(reversed(coords1)))
+        index = index+1
+        if index >= limit:
+            break
+    selected_hospital = nearest_hospital(hospital_list,'duration')
+    print(selected_hospital)
+    print(hospital_list)
+    hospital_name= hospital_list[selected_hospital]['name']
+    if lastspeed>=10 and lastspeed<=30 :
+        level = "Small accident at" + f'\nhttps://www.google.com/maps/@{coords},15.82z?entry=ttu\nHospital: {hospital_name}'
+
+        print("small accident")     
+    elif lastspeed >=31 and lastspeed<= 50:
+        level = "Medium accident" + f'\nhttps://www.google.com/maps/@{coords},15.82z?entry=ttu\nHospital:{hospital_name}'
+
+        print("Medium accident")
+    elif lastspeed >=51:
+         level = "Extreme accident" + f'\nhttps://www.google.com/maps/@{coords},15.82z?entry=ttu\nHospital:{hospital_name}'
+         print("large accident")
+    driver_number = f'whatsapp:{driver_number}'
+    SendMsg(driver_number,level)
+
+
+    data = {'id':coords}
     return jsonify(data),200
 if __name__ == "__main__":   
     app.run(port=5000,debug=True)
